@@ -1,0 +1,17 @@
+mat-toolbar{
+    background-color: black;
+    color:white;
+    position : absolute;
+  top : 0;
+}
+
+.logo{
+    height: 80%;
+    margin-right: 2.8125em;
+    margin-left: 4em;
+}
+
+
+span{
+    padding: 1.6em;
+}
