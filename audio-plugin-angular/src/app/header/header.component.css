@@ -1,17 +1,30 @@
 mat-toolbar{
     background-color: black;
     color:white;
-    position : absolute;
-  top : 0;
+
 }
 
-.logo{
+.logo-link{
     height: 80%;
     margin-right: 2.8125em;
     margin-left: 4em;
 }
 
+.logo{
+    height: 100%;
+}
 
-span{
-    padding: 1.6em;
+a{
+    text-decoration: none;
+    color: white
+}
+
+a:active { 
+    background-color: yellow;
+}
+
+.link{
+    
+    padding-right: 1.6em;
+    padding-left: 1.6em;
 }
