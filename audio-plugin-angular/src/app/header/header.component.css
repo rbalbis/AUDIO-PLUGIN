@@ -14,9 +14,21 @@ mat-toolbar{
     height: 100%;
 }
 
+.item:hover{
+    background-color: yellow;
+    height: 100%;
+    display: table;
+}
+
+.item a {
+    display: table-cell; 
+    vertical-align: middle;
+}
+
 a{
     text-decoration: none;
-    color: white
+    color: white;
+    
 }
 
 a:active { 
