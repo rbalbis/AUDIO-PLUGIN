@@ -15,6 +15,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
   
@@ -32,6 +33,7 @@ const appRoutes: Routes = [
   ],
   imports: [MatToolbarModule,
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     MatInputModule,
     MatIconModule,

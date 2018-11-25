@@ -1,0 +1,107 @@
+.mat-focused .mat-form-field-label {
+  color: red !important;
+}
+
+.btn-search {
+  background-color: #883996;
+  color: white;
+  border-radius: 0px;
+}
+
+.page-title {
+  font-family: "Raleway", sans-serif !important;
+  text-align: center;
+  margin: 0 0 30px 0;
+}
+
+.page-title h1 {
+  text-transform: uppercase;
+  margin: 0;
+  color: #883996;
+  font-weight: bold;
+}
+
+.page-title p {
+  margin: 0;
+  font-size: 1.25rem;
+  font-style: italic;
+  color: #444444;
+}
+
+.page-title .shortline {
+  width: 100px;
+  height: 5px;
+  margin: 30px auto 0 auto;
+  border-bottom: 1px solid #883996;
+}
+
+.search-form {
+  margin-left: 50% !important;
+  transform: translate(-50%);
+  margin-bottom: 30px;
+}
+
+.plugins {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 18rem;
+  padding: 10px;
+  border-radius: 0px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.plugin-img {
+  width: 172.968px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.buttons button {
+  background-color: #883996 !important;
+  border: none;
+}
+
+.card-button {
+  margin-left: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+.divider {
+  display: block;
+  height: 1px;
+  width: 80%;
+  margin: 10px auto;
+  border-bottom: 1px solid #cccccc;
+}
+.plugin-info-container {
+  display: block;
+  padding: 0 10px 5px;
+  box-sizing: border-box;
+  text-align: center;
+}
+.brand {
+  color: #883996;
+  font-size: 0.8em;
+}
+
+a.brand {
+  color: #883996;
+  font-size: 0.8em;
+}
+
+.name {
+  display: block;
+  text-decoration: none;
+  color: #444444;
+}
