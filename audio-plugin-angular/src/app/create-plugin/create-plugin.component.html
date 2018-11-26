@@ -1,0 +1,12 @@
+<input type="text" #newName placeholder="Name" />
+<input type="text" #newCreateur placeholder="Createur" />
+<input type="text" #newDesc placeholder="Description" />
+<br />
+<button (click)="save(newName.value, newCreateur.value, newDesc.value)">Set Name</button>
+<button (click)="update(newName.value, newCreateur.value, newDesc.value)">Update Size</button>
+<button (click)="delete()">Delete</button>
+<ul>
+  <li *ngFor="let item of items | async">
+     {{ item | json }}
+  </li>
+</ul>
