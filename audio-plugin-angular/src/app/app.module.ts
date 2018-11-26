@@ -19,6 +19,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { CreatePluginComponent } from './create-plugin/create-plugin.component';
 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
   
@@ -48,6 +49,7 @@ export const config = {
   ],
   imports: [MatToolbarModule,
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     MatInputModule,
     MatIconModule,

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {MatInputModule} from '@angular/material/input';
+import { Component, OnInit, ElementRef } from '@angular/core';
+
 
 @Component({
   selector: 'app-plugin-list',
@@ -8,9 +8,12 @@ import {MatInputModule} from '@angular/material/input';
 })
 export class PluginListComponent implements OnInit {
   value;
-  constructor() { }
+  plugins = [1,2,3,4,5];
+  constructor(private elementRef: ElementRef) { }
 
   ngOnInit() {
   }
-
+  ngAfterViewInit(){
+    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#f6f6f6';
+ }
 }

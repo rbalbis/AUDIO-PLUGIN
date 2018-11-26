@@ -1,6 +1,51 @@
-<mat-form-field appearance="outline">
-  <mat-label>Outline form field</mat-label>
-  <input matInput placeholder="Placeholder">
-  <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-  <mat-hint>Hint</mat-hint>
-</mat-form-field>
+<div class="content">
+  <div class="page-title">
+    <h1>Plugins</h1>
+    <p>Here be plugins</p>
+    <p class="shortline"></p>
+  </div>
+  <form class="navbar-form pull-left search-form">
+    <div class="input-group">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search pedalboards"
+        name="srch-term"
+        id="srch-term"
+      />
+      <div class="input-group-btn">
+        <button class="btn btn-default btn-search" type="submit">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <div class="plugins">
+    <div class="card" *ngFor="let plugin of plugins">
+      <img
+        class="card-img-top plugin-img"
+        src="https://api.moddevices.com/v2/lv2/plugins/56c4ba21770cb318f9cd2e80/screenshot/"
+      />
+      <div class="card-body">
+        <div class="buttons">
+          <button type="button" class="btn btn-primary card-button">
+            Bouton1
+          </button>
+          <button type="button" class="btn btn-primary card-button">
+            Bouton2
+          </button>
+        </div>
+        <div class="divider"></div>
+        <div class="plugin-info-container">
+          <a
+            class="name"
+            href="/plugins/aHR0cDovL3d3dy5vcGVuYXZwcm9kdWN0aW9ucy5jb20vYXJ0eWZ4I2t1aXph"
+            >Kuiza</a
+          >
+          <a class="brand" href="">OpenAV</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
