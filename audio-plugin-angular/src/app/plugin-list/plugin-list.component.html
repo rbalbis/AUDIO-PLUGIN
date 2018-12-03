@@ -4,17 +4,19 @@
     <p>Here be plugins</p>
     <p class="shortline"></p>
   </div>
-  <form class="navbar-form pull-left search-form">
+  <form class="navbar-form pull-left search-form" (ngSubmit)="onSearch(f)" #f="ngForm">
     <div class="input-group">
       <input
         type="text"
         class="form-control"
         placeholder="Search pedalboards"
-        name="srch-term"
+        name="srchTerm"
         id="srch-term"
+        ngModel
       />
       <div class="input-group-btn">
-        <button class="btn btn-default btn-search" type="submit">
+        <button class="btn btn-default btn-search" type="submit" 
+        >
           <i class="fas fa-search"></i>
         </button>
       </div>
@@ -29,11 +31,11 @@
       />
       <div class="card-body">
         <div class="buttons">
-          <button type="button" class="btn btn-primary card-button">
-            Bouton1
+          <button type="button" class="btn btn-primary card-button" *ngIf="plugin.tag1" (click)="getFilteredPlugin( plugin.tag1)">
+            {{plugin.tag1}}
           </button>
-          <button type="button" class="btn btn-primary card-button">
-            Bouton2
+          <button type="button" class="btn btn-primary card-button" *ngIf="plugin.tag2" (click)="getFilteredPlugin(plugin.tag2)">
+            {{plugin.tag2}}
           </button>
         </div>
         <div class="divider"></div>
@@ -41,9 +43,11 @@
           <a
             class="name"
             href="/plugins/aHR0cDovL3d3dy5vcGVuYXZwcm9kdWN0aW9ucy5jb20vYXJ0eWZ4I2t1aXph"
-            >Kuiza</a
+            >            {{plugin.nomPlugin}}
+            </a
           >
-          <a class="brand" href="">OpenAV</a>
+          <a class="brand" href="">       {{plugin.nomCreateur}}
+          </a>
         </div>
       </div>
     </div>
