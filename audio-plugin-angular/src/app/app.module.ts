@@ -20,12 +20,15 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { CreatePluginComponent } from './create-plugin/create-plugin.component';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { FirebaseFilterPipe } from './firebase-filter.pipe';
+import { PluginDetailsComponent } from './plugin-details/plugin-details.component';
 
 const appRoutes: Routes = [
   
   { path: 'home', component: HomeComponent },
   { path: 'plugin-list', component: PluginListComponent },
   { path: 'create-plugin', component: CreatePluginComponent },
+  {path: 'plugin-details/:id', component: PluginDetailsComponent},
 
   //{ path: '**', component: AppComponent },
 ];
@@ -45,7 +48,9 @@ export const config = {
     HeaderComponent,
     HomeComponent,
     PluginListComponent,
-    CreatePluginComponent
+    CreatePluginComponent,
+    FirebaseFilterPipe,
+    PluginDetailsComponent
   ],
   imports: [MatToolbarModule,
     BrowserModule,

@@ -4,7 +4,7 @@
     <p>Here be plugins</p>
     <p class="shortline"></p>
   </div>
-  <form class="navbar-form pull-left search-form" (ngSubmit)="onSearch(f)" #f="ngForm">
+  <form class="navbar-form pull-left search-form" >
     <div class="input-group">
       <input
         type="text"
@@ -12,7 +12,7 @@
         placeholder="Search pedalboards"
         name="srchTerm"
         id="srch-term"
-        ngModel
+        [(ngModel)]="srchTerm"
       />
       <div class="input-group-btn">
         <button class="btn btn-default btn-search" type="submit" 
@@ -23,8 +23,8 @@
     </div>
   </form>
 
-  <div class="plugins">
-    <div class="card" *ngFor="let plugin of plugins">
+  <div class="plugins" *ngIf="plugins.length > 0">
+    <div class="card"  *ngFor="let plugin of plugins | firebaseFilter : srchTerm">
       <img
         class="card-img-top plugin-img"
         src="https://api.moddevices.com/v2/lv2/plugins/56c4ba21770cb318f9cd2e80/screenshot/"

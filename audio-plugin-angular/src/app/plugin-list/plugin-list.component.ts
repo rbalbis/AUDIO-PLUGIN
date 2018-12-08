@@ -11,8 +11,8 @@ import { NgForm } from "@angular/forms";
 })
 export class PluginListComponent implements OnInit {
   value;
-  plugins = [];
-  srchTerm: string;
+  plugins : PluginAudio[];
+  srchTerm= "";
 
   itemRef: AngularFireObject<any>;
   item: Observable<any>;
@@ -23,21 +23,16 @@ export class PluginListComponent implements OnInit {
 
   ngOnInit() {
     this.getAllPlugin();
+
       }
   ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor =
       "#f6f6f6";
   }
 
-  onSearch(form: NgForm){
-    console.log(form.value.srchTerm);
-    
-    this.getFilteredPlugin(form.value.srchTerm));
-  }
-
-  getFilteredPlugin(filtre : string){
+  /* getFilteredPlugin(filtre : string){
     this.plugins = [];
-    var ref = this.db.list('list-plugin',ref => ref.orderByChild('tag1').equalTo(filtre)).valueChanges().subscribe(
+    var ref = this.db.list('list-plugin',ref => ref.orderByChild('tag1').startAt(filtre).endAt(filtre+"\uf8ff")).valueChanges().subscribe(
       res => {
         console.log(res);
         res.forEach( elmt => {
@@ -48,30 +43,39 @@ export class PluginListComponent implements OnInit {
       }
     )
 
-    var ref = this.db.list('list-plugin',ref => ref.orderByChild('tag2').equalTo(filtre)).valueChanges().subscribe(
+    var ref = this.db.list('list-plugin',ref => ref.orderByChild('tag2').startAt(filtre).endAt(filtre+"\uf8ff")).valueChanges().subscribe(
       res => {
         console.log(res);
         res.forEach( elmt => {
+          if(this.plugins.map(p => {return p.}) indexOf(elmt) === -1){
+            console.log(elmt);
+            console.log(this.plugins);
+            
+            
           this.plugins.push(<PluginAudio>elmt);
+          }
         }
 
         )
       }
     )
 
-  }
+  } */
 
   
 
   getAllPlugin(){
+    this.plugins = [];
     this.db.list('list-plugin').valueChanges().subscribe(
       res => {
-        console.log(res[0]);
-        res.forEach( (elmt) => {
-          this.plugins.push(<PluginAudio>elmt);
+        
+        res.forEach( elmt => {
+          
+          
+          var newPlugin = new PluginAudio(elmt["nomPlugin"],elmt["description"],elmt["nomCreateur"],elmt["key"],elmt["tag1"],elmt["tag2"]);
+          this.plugins.push(newPlugin);
         })
         
-        console.log(this.plugins);
         
       }
     )

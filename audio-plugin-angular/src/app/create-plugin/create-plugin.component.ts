@@ -15,19 +15,25 @@ export class CreatePluginComponent implements OnInit {
 
 
   constructor(db: AngularFireDatabase) {
-    
+
     this.db = db;
   }
 
-  save(newName : string, newCreateur: string, newDesc: string) {
-    this.db.database.ref(this.db.createPushId()).set({"nomPlugin": newName, "nomCreateur":newCreateur, "description": newDesc});
+  save(newName: string, newCreateur: string, newDesc: string, tags: string) {
+    var tagList = tags.split(";");
+    var key = this.db
+      .database
+      .ref("list-plugin")
+      .push({
+        nomPlugin: newName,
+        nomCreateur: newCreateur,
+        description: newDesc,
+        tag1: tagList[0], tag2: tagList[1]
+      }).key;
+
+    this.db.database.ref("list-plugin/"+ key).update({key: key});
   }
-  update(newSize: string) {
-    this.itemRef.update({ size: newSize });
-  }
-  delete() {
-    this.itemRef.remove();
-  }
+
 
   ngOnInit() {
   }
