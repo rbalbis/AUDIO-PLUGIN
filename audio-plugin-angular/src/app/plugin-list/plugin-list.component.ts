@@ -1,8 +1,10 @@
+import { AuthentificationService } from "./../services/authentification.service";
 import { Component, OnInit, ElementRef } from "@angular/core";
 import { AngularFireDatabase, AngularFireObject } from "@angular/fire/database";
 import { Observable } from "rxjs";
 import { PluginAudio } from "../plugin-audio";
 import { NgForm } from "@angular/forms";
+import { log } from "util";
 
 @Component({
   selector: "app-plugin-list",
@@ -11,20 +13,24 @@ import { NgForm } from "@angular/forms";
 })
 export class PluginListComponent implements OnInit {
   value;
-  plugins : PluginAudio[];
-  srchTerm= "";
+  plugins: PluginAudio[];
+  srchTerm = "";
 
   itemRef: AngularFireObject<any>;
   item: Observable<any>;
   db: AngularFireDatabase;
-  constructor(private elementRef: ElementRef, db: AngularFireDatabase) {
+  constructor(
+    private elementRef: ElementRef,
+    db: AngularFireDatabase,
+    private authentificationService: AuthentificationService
+  ) {
     this.db = db;
   }
 
   ngOnInit() {
     this.getAllPlugin();
-
-      }
+    console.log(this.authentificationService.connected);
+  }
   ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor =
       "#f6f6f6";
@@ -77,10 +83,7 @@ export class PluginListComponent implements OnInit {
           
           var newPlugin = new PluginAudio(elmt["nomPlugin"],elmt["description"],elmt["nomCreateur"],elmt["key"],elmt["tag1"],elmt["tag2"], elmt["image"]);
           this.plugins.push(newPlugin);
-        })
-        
-        
-      }
-    )
+        });
+      });
   }
 }

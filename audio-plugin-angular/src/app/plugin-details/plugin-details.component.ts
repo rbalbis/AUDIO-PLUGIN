@@ -6,9 +6,9 @@ import { timeout } from 'q';
 
 
 @Component({
-  selector: 'app-plugin-details',
-  templateUrl: './plugin-details.component.html',
-  styleUrls: ['./plugin-details.component.css']
+  selector: "app-plugin-details",
+  templateUrl: "./plugin-details.component.html",
+  styleUrls: ["./plugin-details.component.css"]
 })
 export class PluginDetailsComponent implements OnInit {
 
@@ -18,8 +18,6 @@ export class PluginDetailsComponent implements OnInit {
   load = false;
   constructor(private route: ActivatedRoute,   db: AngularFireDatabase) { 
     this.db = db;
-    
-    
   }
 
   ngOnInit() {

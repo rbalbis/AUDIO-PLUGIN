@@ -1,23 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
-import { Observable } from 'rxjs';
+import { AuthentificationService } from "./../services/authentification.service";
+import { Component, OnInit } from "@angular/core";
+import { AngularFireDatabase, AngularFireObject } from "@angular/fire/database";
+import { Observable } from "rxjs";
 
 @Component({
-  selector: 'app-create-plugin',
-  templateUrl: './create-plugin.component.html',
-  styleUrls: ['./create-plugin.component.css']
+  selector: "app-create-plugin",
+  templateUrl: "./create-plugin.component.html",
+  styleUrls: ["./create-plugin.component.css"]
 })
 export class CreatePluginComponent implements OnInit {
-
   itemRef: AngularFireObject<any>;
   item: Observable<any>;
   db: AngularFireDatabase;
+  connected;
 
-
-  constructor(db: AngularFireDatabase) {
-
+  constructor(
+    db: AngularFireDatabase,
+    private authentificationService: AuthentificationService
+  ) {
+    this.connected = this.authentificationService.connected;
     this.db = db;
   }
+
+  ngOnInit() {}
+
 
   save(newName: string, newCreateur: string, newDesc: string, tags: string, newImage: string) {
     var tagList = tags.split(";");
@@ -33,11 +39,11 @@ export class CreatePluginComponent implements OnInit {
       }).key;
 
     this.db.database.ref("list-plugin/"+ key).update({key: key});
+    this.authentificationService.addPlugin(key);
+
+  }
+
+   
   }
 
 
-  ngOnInit() {
-  }
-
-  
-}
