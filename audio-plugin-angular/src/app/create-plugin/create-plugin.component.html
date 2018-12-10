@@ -18,14 +18,17 @@
 <mat-form-field class="example-full-width createur">
     <input matInput #tags placeholder="Tags (séparé par un ';' )" />
   </mat-form-field>
+
+  <br>
+  <mat-form-field class="example-full-width createur">
+      <input matInput #newImage placeholder="url de l'image" />
+    </mat-form-field>
+
 </form>
 
-<button mat-raised-button (click)="save(newName.value, newCreateur.value, newDesc.value, tags.value)">Creer nouveau plugin</button>
+
+
+<button mat-raised-button (click)="save(newName.value, newCreateur.value, newDesc.value, tags.value, newImage.value)">Creer nouveau plugin</button>
 <!--<button mat-raised-button (click)="update(newName.value, newCreateur.value, newDesc.value)">Mettre a jour plugin</button>
 <button mat-raised-button (click)="delete()">Supprimer plugin</button>
 -->
-<ul>
-  <li *ngFor="let item of items | async">
-     {{ item | json }}
-  </li>
-</ul>

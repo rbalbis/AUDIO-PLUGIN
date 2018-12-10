@@ -1,3 +1,23 @@
-<p>
-  plugin-details works!
-</p>
+<div class="card" >
+    <img
+    class="card-img-top plugin-img" *ngIf="plugin"
+    src="{{ plugin ? plugin.image : ''}}" 
+  /> 
+  <div class="card-body" *ngIf="load">
+    <div class="buttons">
+      <button type="button" class="btn btn-primary card-button" *ngIf="plugin.tag1" (click)="getFilteredPlugin(plugin.tag1)">
+        {{plugin ? plugin.tag1 : ''}}
+      </button>
+      <button type="button" class="btn btn-primary card-button" *ngIf="plugin.tag2" (click)="getFilteredPlugin(plugin.tag2)">
+        {{plugin ? plugin.tag2 : ''}}
+      </button>
+    </div>
+    <div class="divider"></div>
+    <div class="plugin-info-container">
+      <div>{{plugin ? plugin.nomPlugin : '' }} </div>  
+       
+      <a class="brand" href="">       {{plugin ? plugin.nomCreateur : ''}}
+      </a>
+    </div>
+    {{plugin ? plugin.description : ''}}
+  </div>

@@ -24,11 +24,13 @@
   </form>
 
   <div class="plugins" *ngIf="plugins.length > 0">
-    <div class="card"  *ngFor="let plugin of plugins | firebaseFilter : srchTerm">
-      <img
+    <div class="card"  *ngFor="let plugin of plugins | firebaseFilter : srchTerm" >
+      <a [routerLink]="['/plugin-details',plugin.key]" ><img 
         class="card-img-top plugin-img"
-        src="https://api.moddevices.com/v2/lv2/plugins/56c4ba21770cb318f9cd2e80/screenshot/"
+        src="{{ plugin ? plugin.image : ''}}" 
       />
+
+      </a>
       <div class="card-body">
         <div class="buttons">
           <button type="button" class="btn btn-primary card-button" *ngIf="plugin.tag1" (click)="getFilteredPlugin( plugin.tag1)">
@@ -42,11 +44,11 @@
         <div class="plugin-info-container">
           <a
             class="name"
-            href="/plugins/aHR0cDovL3d3dy5vcGVuYXZwcm9kdWN0aW9ucy5jb20vYXJ0eWZ4I2t1aXph"
+            [routerLink]="['/plugin-details',plugin.key]"
             >            {{plugin.nomPlugin}}
             </a
           >
-          <a class="brand" href="">       {{plugin.nomCreateur}}
+          <a class="brand">       {{plugin.nomCreateur}}
           </a>
         </div>
       </div>

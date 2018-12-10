@@ -1,0 +1,71 @@
+.mat-focused .mat-form-field-label {
+    color: red !important;
+  }
+  
+
+  .plugins {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    
+    padding: 10px;
+    border-radius: 0px;
+    margin-left: 10%;
+    margin-right: 10%;
+
+  }
+  
+  .plugin-img {
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+  
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .buttons button {
+    background-color: #883996 !important;
+    border: none;
+  }
+  
+  .card-button {
+    margin-left: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+  .divider {
+    display: block;
+    height: 1px;
+    width: 80%;
+    margin: 10px auto;
+    border-bottom: 1px solid #cccccc;
+  }
+  .plugin-info-container {
+    display: block;
+    padding: 0 10px 5px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  .brand {
+    color: #883996;
+    font-size: 0.8em;
+  }
+  
+  a.brand {
+    color: #883996;
+    font-size: 0.8em;
+  }
+  
+  .name {
+    display: block;
+    text-decoration: none;
+    color: #444444;
+  }
+  

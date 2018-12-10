@@ -62,6 +62,9 @@ export class PluginListComponent implements OnInit {
 
   } */
 
+  getFilteredPlugin(buttonTag){
+    this.srchTerm = buttonTag;
+  }
   
 
   getAllPlugin(){
@@ -72,7 +75,7 @@ export class PluginListComponent implements OnInit {
         res.forEach( elmt => {
           
           
-          var newPlugin = new PluginAudio(elmt["nomPlugin"],elmt["description"],elmt["nomCreateur"],elmt["key"],elmt["tag1"],elmt["tag2"]);
+          var newPlugin = new PluginAudio(elmt["nomPlugin"],elmt["description"],elmt["nomCreateur"],elmt["key"],elmt["tag1"],elmt["tag2"], elmt["image"]);
           this.plugins.push(newPlugin);
         })
         

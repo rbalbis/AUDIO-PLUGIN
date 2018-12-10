@@ -19,7 +19,7 @@ export class CreatePluginComponent implements OnInit {
     this.db = db;
   }
 
-  save(newName: string, newCreateur: string, newDesc: string, tags: string) {
+  save(newName: string, newCreateur: string, newDesc: string, tags: string, newImage: string) {
     var tagList = tags.split(";");
     var key = this.db
       .database
@@ -28,7 +28,8 @@ export class CreatePluginComponent implements OnInit {
         nomPlugin: newName,
         nomCreateur: newCreateur,
         description: newDesc,
-        tag1: tagList[0], tag2: tagList[1]
+        tag1: (tagList[0] ? tagList[0] : null) , tag2: (tagList[1] ? tagList[1] : null),
+        image : newImage
       }).key;
 
     this.db.database.ref("list-plugin/"+ key).update({key: key});
@@ -38,4 +39,5 @@ export class CreatePluginComponent implements OnInit {
   ngOnInit() {
   }
 
+  
 }
