@@ -12,7 +12,12 @@ export class AuthentificationService {
   constructor() {}
 
   connection(login, password): boolean {
-    if (login == "admin" && password == "root") {
+    if (
+      (login == "admin" && password == "root") ||
+      (login == "geoffrey" && password == "password") ||
+      (login == "robin" && password == "password") ||
+      (login == "michel" && password == "password")
+    ) {
       this.login = login;
       this.password = password;
       this.connected = true;

@@ -1,38 +1,37 @@
-mat-toolbar{
-    background-color: white;
-    color:black;
-    box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.1);
+mat-toolbar {
+  background-color: white;
+  color: black;
+  box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.1);
 }
 
-.logo-link{
-    height: 80%;
-    margin-right: 2.8125em;
-    margin-left: 4em;
+.logo-link {
+  height: 80%;
+  margin-right: 2.8125em;
+  margin-left: 4em;
 }
 
-.logo{
-    height: 100%;
+.logo {
+  height: 100%;
 }
 
-.item:hover{
-    background-color: #f6f6f6;
-    height: 100%;
-    display: table;
+.item:hover {
+  background-color: #f6f6f6;
+  height: 100%;
+  display: table;
 }
 
 .item a {
-    display: table-cell; 
-    vertical-align: middle;
+  display: table-cell;
+  vertical-align: middle;
 }
 
-a{
-    text-decoration: none;
-    color: #444;
-    font-size: .9em;   
+a {
+  text-decoration: none;
+  color: #444;
+  font-size: 0.9em;
 }
 
-.link{
-    
-    padding-right: 1.6em;
-    padding-left: 1.6em;
+.link {
+  padding-right: 1.6em;
+  padding-left: 1.6em;
 }

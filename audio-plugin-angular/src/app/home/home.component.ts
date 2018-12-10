@@ -8,7 +8,7 @@ import { Component, OnInit } from "@angular/core";
 })
 export class HomeComponent implements OnInit {
   connected = false;
-  constructor(private authentificationService: AuthentificationService) {
+  constructor(public authentificationService: AuthentificationService) {
     this.connected = this.authentificationService.connected;
     console.log(this.connected);
   }

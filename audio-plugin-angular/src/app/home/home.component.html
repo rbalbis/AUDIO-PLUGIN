@@ -1,4 +1,8 @@
 <div *ngIf="!connected">
   <app-authentification-component></app-authentification-component>
 </div>
-<div *ngIf="connected"><h1>Vous êtes connecté</h1></div>
+<div *ngIf="connected">
+  <h1>
+    Vous êtes connecté, bonjour <b>{{ authentificationService.login }}</b>
+  </h1>
+</div>
