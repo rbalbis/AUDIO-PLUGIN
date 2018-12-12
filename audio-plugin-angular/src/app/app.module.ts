@@ -23,14 +23,15 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FirebaseFilterPipe } from "./firebase-filter.pipe";
 import { PluginDetailsComponent } from "./plugin-details/plugin-details.component";
 import { AuthentificationComponentComponent } from "./authentification-component/authentification-component.component";
+import { EditPluginComponent } from './edit-plugin/edit-plugin.component';
+import { CreateUserComponent } from './create-user/create-user.component';
 
 const appRoutes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "plugin-list", component: PluginListComponent },
   { path: "create-plugin", component: CreatePluginComponent },
-  { path: "plugin-details/:id", component: PluginDetailsComponent }
-
-  //{ path: '**', component: AppComponent },
+  { path: "plugin-details/:id", component: PluginDetailsComponent },
+  { path: '**', component: PluginListComponent },
 ];
 
 export const config = {
@@ -51,7 +52,9 @@ export const config = {
     CreatePluginComponent,
     FirebaseFilterPipe,
     PluginDetailsComponent,
-    AuthentificationComponentComponent
+    AuthentificationComponentComponent,
+    EditPluginComponent,
+    CreateUserComponent
   ],
   imports: [
     MatToolbarModule,
@@ -64,6 +67,7 @@ export const config = {
     MatFormFieldModule,
     AngularFireModule.initializeApp(config),
     AngularFireDatabaseModule,
+    AngularFireStorageModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: false } // <-- debugging purposes only

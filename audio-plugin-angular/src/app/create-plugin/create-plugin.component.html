@@ -4,17 +4,9 @@
       <input matInput #newName placeholder="Name" />
     </mat-form-field>
     <br />
-    <mat-form-field class="example-full-width createur">
-      <input matInput #newCreateur placeholder="Createur" />
-    </mat-form-field>
-    <br />
+  
     <mat-form-field class="example-full-width desc">
-      <textarea
-        matInput
-        #newDesc
-        placeholder="Description"
-        maxlength="256"
-      ></textarea>
+      <textarea matInput #newDesc placeholder="Description" maxlength="256"></textarea>
 
       <mat-hint align="end">{{ newDesc.value.length }} / 256</mat-hint>
     </mat-form-field>
@@ -23,27 +15,20 @@
     <mat-form-field class="example-full-width createur">
       <input matInput #tags placeholder="Tags (séparé par un ';' )" />
     </mat-form-field>
+    <br>
+  
+
+    <label for="file">Image du plugin :</label>
+<input type="file" (change)="upload($event)" accept=".png,.jpg" />
+<span>{{chargementImage ? (chargementImage | async) : ''}}</span>
   </form>
 
-  <br>
-<mat-form-field class="example-full-width createur">
-    <input matInput #tags placeholder="Tags (séparé par un ';' )" />
-  </mat-form-field>
+<br>
 
-  <br>
-  <mat-form-field class="example-full-width createur">
-      <input matInput #newImage placeholder="url de l'image" />
-    </mat-form-field>
+  <button mat-raised-button [disabled]="imageName && imageUploaded" (click)="save(newName.value, newDesc.value, tags.value)">Creer
+    nouveau plugin</button>
 
-</form>
-
-
-
-<button mat-raised-button (click)="save(newName.value, newCreateur.value, newDesc.value, tags.value, newImage.value)">Creer nouveau plugin</button>
-<!--<button mat-raised-button (click)="update(newName.value, newCreateur.value, newDesc.value)">Mettre a jour plugin</button>
-<button mat-raised-button (click)="delete()">Supprimer plugin</button>
--->
-
-<div *ngIf="!connected">
+</div>
+  <div *ngIf="!connected">
     <h1>Vous devez être connecté pour ajouter un plugin</h1>
   </div>
