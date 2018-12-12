@@ -15,16 +15,12 @@ export class AuthentificationComponentComponent implements OnInit {
   ngOnInit() {}
 
   connection() {
-    console.log(this.login);
-    console.log(this.password);
     let connected = this.authentificationService.connection(
       this.login,
       this.password
     );
     if (connected) {
-      console.log("OK");
     } else {
-      console.log("nope");
     }
   }
 }
