@@ -1,0 +1,32 @@
+<div *ngIf="connected">
+  <form class="create-form">
+    <mat-form-field class="example-full-width nom">
+      <input matInput #newName placeholder="Name" [value]="plugin.nomPlugin"/>
+    </mat-form-field>
+    
+    <br />
+    <mat-form-field class="example-full-width desc">
+      <textarea matInput #newDesc placeholder="Description" maxlength="256" [value]="plugin.description"></textarea>
+
+      <mat-hint align="end">{{ newDesc.value.length }} / 256</mat-hint>
+    </mat-form-field>
+
+    <br />
+    <mat-form-field class="example-full-width createur">
+      <input matInput #tags placeholder="Tags (séparé par un ';' )"  [value]="(plugin.tag1 ? plugin.tag1 + (plugin.tag2 ? ';' + plugin.tag2 : '') : '')"/>
+    </mat-form-field>
+    <br>
+  
+
+    <label for="file">Image du plugin :</label>
+<input type="file" (change)="upload($event)" accept=".png,.jpg" />
+<span>{{chargementImage ? (chargementImage | async) : ''}}</span>
+  </form>
+
+<br>
+
+<button mat-raised-button [disabled]="imageName && imageUploaded" (click)="save(newName.value, newDesc.value, tags.value)">Modifier
+   plugin</button>
+ 
+
+</div>

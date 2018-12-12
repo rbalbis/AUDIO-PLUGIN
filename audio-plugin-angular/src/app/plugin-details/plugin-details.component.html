@@ -20,4 +20,10 @@
       </a>
     </div>
     {{plugin ? plugin.description : ''}}
+
+    
   </div>
+  <div *ngIf="connected && isEditable "> <button (click)="delete()">Supprimer plugin</button>
+    <button (click)="toggleEdit()">Modifier plugin</button>
+  </div>
+  <app-edit-plugin *ngIf="displayEdit" [plugin]="plugin">Supprimer plugin</app-edit-plugin>

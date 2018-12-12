@@ -15,7 +15,8 @@ export class FirebaseFilterPipe implements PipeTransform {
 
       
       if(plugin.tag1 && plugin.tag1.toUpperCase().includes(filtre.toUpperCase()) || 
-      plugin.tag2 && plugin.tag2.toUpperCase().includes(filtre.toUpperCase())){
+      plugin.tag2 && plugin.tag2.toUpperCase().includes(filtre.toUpperCase())
+      || plugin.nomPlugin && plugin.nomPlugin.toUpperCase().includes(filtre.toUpperCase())){
         
           newPluginList.push(plugin);
         

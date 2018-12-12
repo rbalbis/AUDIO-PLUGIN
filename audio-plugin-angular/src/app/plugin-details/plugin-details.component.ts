@@ -3,6 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
 import { PluginAudio } from '../plugin-audio';
 import { timeout } from 'q';
+import { AuthentificationService } from "./../services/authentification.service";
 
 
 @Component({
@@ -12,17 +13,24 @@ import { timeout } from 'q';
 })
 export class PluginDetailsComponent implements OnInit {
 
+  connected : boolean;
+  isEditable : boolean;
   id: string;
   db: AngularFireDatabase;
   plugin: PluginAudio;
   load = false;
-  constructor(private route: ActivatedRoute,   db: AngularFireDatabase) { 
+  displayEdit = false;
+  constructor(private route: ActivatedRoute,   db: AngularFireDatabase,
+    private authentificationService: AuthentificationService) { 
     this.db = db;
   }
 
   ngOnInit() {
     
     this.getData();
+  
+      this.connected = this.authentificationService.connected;
+      this.isEditable = (this.plugin && this.authentificationService.login === this.plugin.nomCreateur);
     
     
 
@@ -35,11 +43,19 @@ export class PluginDetailsComponent implements OnInit {
         var elmt = snpt.toJSON()
         this.plugin = new PluginAudio(elmt["nomPlugin"],elmt["description"],elmt["nomCreateur"],elmt["key"],elmt["tag1"],elmt["tag2"],elmt["image"]);
         this.load = true;
+        this.isEditable = (this.plugin && this.authentificationService.login === this.plugin.nomCreateur);
       });
     });
   }
 
-  ngOnDestroy() {
-   
+  delete(){
+    this.db.database.ref("list-plugin/").child(this.id).remove();
+    window.alert("Plugin supprimé avec succes ! ");
+
   }
+
+  toggleEdit(){
+    this.displayEdit = !this.displayEdit;
+  }
+
 }
