@@ -4,6 +4,8 @@ import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
 import { PluginAudio } from '../plugin-audio';
 import { timeout } from 'q';
 import { AuthentificationService } from "./../services/authentification.service";
+import { Location } from '@angular/common';
+
 
 
 @Component({
@@ -21,7 +23,8 @@ export class PluginDetailsComponent implements OnInit {
   load = false;
   displayEdit = false;
   constructor(private route: ActivatedRoute,   db: AngularFireDatabase,
-    private authentificationService: AuthentificationService) { 
+    private authentificationService: AuthentificationService,
+    private location: Location) { 
     this.db = db;
   }
 
@@ -30,7 +33,7 @@ export class PluginDetailsComponent implements OnInit {
     this.getData();
   
       this.connected = this.authentificationService.connected;
-      this.isEditable = (this.plugin && this.authentificationService.login === this.plugin.nomCreateur);
+      this.isEditable = (this.plugin && (this.authentificationService.login === this.plugin.nomCreateur) || ("admin" === this.authentificationService.login));
     
     
 
@@ -43,7 +46,7 @@ export class PluginDetailsComponent implements OnInit {
         var elmt = snpt.toJSON()
         this.plugin = new PluginAudio(elmt["nomPlugin"],elmt["description"],elmt["nomCreateur"],elmt["key"],elmt["tag1"],elmt["tag2"],elmt["image"]);
         this.load = true;
-        this.isEditable = (this.plugin && this.authentificationService.login === this.plugin.nomCreateur);
+        this.isEditable = (this.plugin && (this.authentificationService.login === this.plugin.nomCreateur) || ("admin" === this.authentificationService.login));
       });
     });
   }
@@ -51,6 +54,7 @@ export class PluginDetailsComponent implements OnInit {
   delete(){
     this.db.database.ref("list-plugin/").child(this.id).remove();
     window.alert("Plugin supprimé avec succes ! ");
+    this.location.back();
 
   }
 
